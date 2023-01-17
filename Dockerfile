@@ -12,7 +12,8 @@ RUN yarn build
 
 FROM nginx:1.16-alpine
 COPY --from=build /app/dist /usr/share/nginx/html
-COPY /app/default.conf /etc/nginx/conf.d/default.conf
+RUN ls -a
+#COPY /app/default.conf /etc/nginx/conf.d/default.conf
 RUN wget https://github.com/tindy2013/subconverter/releases/download/v0.7.2/subconverter_linux64.tar.gz && tar -zxvf subconverter_linux64.tar.gz
 #COPY /subconverter /app
 RUN ls -a
