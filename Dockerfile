@@ -20,6 +20,6 @@ RUN rm ./subconverter/pref.example.*
 RUN ls
 COPY pref.example.toml ./subconverter/pref.example.toml
 RUN ls
-#EXPOSE 8080
+EXPOSE 80 155 443
 CMD ./subconverter/subconverter
 #CMD [ "nginx", "-g", "daemon off;" ]
