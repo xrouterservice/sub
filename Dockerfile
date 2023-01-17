@@ -21,4 +21,4 @@ RUN wget https://github.com/tindy2013/subconverter/releases/download/v0.7.2/subc
 RUN ls -a
 EXPOSE 80
 
-CMD [ /app/start.sh ]
+CMD nohup ./subconverter/subconverter & nginx -g "daemon off;"
