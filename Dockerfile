@@ -26,6 +26,6 @@ RUN rm ./subconverter/pref.example.*
 COPY /pref.example.toml ./subconverter/pref.example.toml
 
 EXPOSE 80 155 443
-CMD [ "/start.sh" ]
+#CMD [ "/start.sh" ]
 #CMD nohup /app/subconverter/subconverter & nginx -g "daemon off;"
-#CMD [ "nginx", "-g", "daemon off;" ]
+CMD [ "supervisord ", "-c", "/supervisord.conf" ]
