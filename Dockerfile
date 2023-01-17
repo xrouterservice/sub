@@ -19,3 +19,4 @@ RUN wget https://github.com/tindy2013/subconverter/releases/download/v0.7.2/subc
 COPY pref.example.toml ./subconverter/pref.toml
 #EXPOSE 8080
 CMD ./subconverter/subconverter
+#CMD [ "nginx", "-g", "daemon off;" ]
