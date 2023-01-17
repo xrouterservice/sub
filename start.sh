@@ -1,7 +1,5 @@
 #/bin/bash
 
-
-
 nohup /app/subconverter/subconverter &
 
 nginx -g "daemon off;"

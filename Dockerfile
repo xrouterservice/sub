@@ -22,6 +22,6 @@ COPY pref.example.toml ./subconverter/pref.example.toml
 
 EXPOSE 80 155 443
 USER root
-CMD [ "./start.sh" ]
-#CMD nginx -g "daemon off;" && nohup /app/subconverter/subconverter &
+#CMD [ "./start.sh" ]
+CMD nohup /app/subconverter/subconverter & && nginx -g "daemon off;"
 #CMD [ "nginx", "-g", "daemon off;" ]
