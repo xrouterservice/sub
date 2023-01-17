@@ -1,4 +1,5 @@
 #/bin/sh
 
-nohup /app/subconverter/subconverter &
-nginx -g "daemon off;"
+nginx -g "daemon on;"
+
+./subconverter/subconverter

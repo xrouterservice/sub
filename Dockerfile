@@ -14,11 +14,8 @@ FROM nginx:1.16-alpine
 COPY --from=build /app/dist /usr/share/nginx/html
 WORKDIR /app
 COPY . /app
-RUN ls -a
 COPY default.conf /etc/nginx/conf.d/default.conf
 RUN wget https://github.com/tindy2013/subconverter/releases/download/v0.7.2/subconverter_linux64.tar.gz && tar -zxvf subconverter_linux64.tar.gz
-#COPY ./subconverter /
-RUN cat /etc/nginx/conf.d/default.conf
-EXPOSE 25500
+EXPOSE 80
 
-CMD nohup ./subconverter/subconverter & nginx -g "daemon off;"
+CMD [ ./start.sh ]
