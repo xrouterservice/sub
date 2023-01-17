@@ -1,7 +1,3 @@
-#/bin/bash
+#! /bin/bash -eu
 
-nohup /app/subconverter/subconverter &
-
-nginx -g "daemon off;"
-
-netstat -anlp |grep 155
+supervisord -c /supervisord.conf
