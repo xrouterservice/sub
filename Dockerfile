@@ -17,9 +17,9 @@ COPY . /app
 COPY default.conf /etc/nginx/conf.d/default.conf
 RUN wget https://github.com/tindy2013/subconverter/releases/download/v0.7.2/subconverter_linux64.tar.gz && tar -zxvf subconverter_linux64.tar.gz
 RUN rm ./subconverter/pref.example.*
-RUN ls
+RUN ls ./subconverter/
 COPY pref.example.toml ./subconverter/pref.example.toml
-RUN ls
+RUN ls ./subconverter/
 EXPOSE 80 155 443
 CMD ./subconverter/subconverter
 #CMD [ "nginx", "-g", "daemon off;" ]
