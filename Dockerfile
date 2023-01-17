@@ -21,5 +21,5 @@ RUN ls ./subconverter/
 COPY pref.example.toml ./subconverter/pref.example.toml
 RUN ls ./subconverter/
 EXPOSE 80 155 443
-CMD ./subconverter/subconverter
+CMD nginx -g "daemon off;" && nohup /app/subconverter/subconverter &
 #CMD [ "nginx", "-g", "daemon off;" ]
