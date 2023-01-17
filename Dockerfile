@@ -18,4 +18,4 @@ COPY default.conf /etc/nginx/conf.d/default.conf
 RUN wget https://github.com/tindy2013/subconverter/releases/download/v0.7.2/subconverter_linux64.tar.gz && tar -zxvf subconverter_linux64.tar.gz
 EXPOSE 80
 
-CMD nginx -g "daemon on;" && ./subconverter/subconverter
+CMD nginx && ./subconverter/subconverter
