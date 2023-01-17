@@ -18,7 +18,7 @@ RUN ls -a
 COPY default.conf /etc/nginx/conf.d/default.conf
 RUN wget https://github.com/tindy2013/subconverter/releases/download/v0.7.2/subconverter_linux64.tar.gz && tar -zxvf subconverter_linux64.tar.gz
 #COPY ./subconverter /
-RUN ls -a
+RUN cat /etc/nginx/conf.d/default.conf
 # EXPOSE 80
 
 CMD nohup ./subconverter/subconverter & nginx -g "daemon off;"
