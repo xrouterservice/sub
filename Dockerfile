@@ -14,8 +14,8 @@ FROM tindy2013/subconverter:latest AS subconverter
 RUN rm /base/pref.example.*
 COPY ./pref.example.toml /base/
 
-ARG VERSION_ALPINE=3.16
-FROM alpine:${VERSION_ALPINE}
+# ARG VERSION_ALPINE=3.16
+FROM alpine:3.16
 # Create user
 RUN adduser -D -u 1000 -g 1000 -s /bin/sh www && \
     mkdir -p /var/www && \
