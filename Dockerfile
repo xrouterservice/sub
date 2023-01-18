@@ -10,10 +10,6 @@ WORKDIR /app
 COPY . /app
 RUN yarn build
 
-FROM tindy2013/subconverter:latest AS subconverter
-RUN rm /base/pref.example.*
-COPY ./pref.example.toml /base/
-
 # ARG VERSION_ALPINE=3.16
 FROM alpine:3.16
 # Create user
@@ -27,7 +23,9 @@ RUN apk add --no-cache --update tini
 
 # Install a golang port of supervisord
 COPY --from=ochinchina/supervisord:latest /usr/local/bin/supervisord /usr/bin/supervisord
-
+COPY --from=tindy2013/subconverter:latest /base/ /base
+RUN rm /base/pref.example.*
+COPY ./pref.example.toml /base/
 # Install nginx & gettext (envsubst)
 # Create cachedir and fix permissions
 RUN apk add --no-cache --update \
@@ -39,8 +37,8 @@ RUN apk add --no-cache --update \
     chown -R www:www /var/lib/nginx
 
 COPY ./supervisord.conf /supervisord.conf
-COPY ./default.conf /etc/nginx/conf.d/default.conf
+COPY ./nginx.conf /etc/nginx/nginx.conf
 RUN cat /etc/nginx/nginx.conf
 COPY --from=build /app/dist /usr/share/nginx/html
-COPY --from=subconverter /base /app
+
 CMD ["/usr/bin/supervisord","-c","/supervisord.conf"]
