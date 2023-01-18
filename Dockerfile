@@ -23,9 +23,9 @@ RUN apk add --no-cache --update tini
 
 # Install a golang port of supervisord
 COPY --from=ochinchina/supervisord:latest /usr/local/bin/supervisord /usr/bin/supervisord
-COPY --from=stilleshan/subconverter /base/* /base
-RUN rm /base/pref.*
-COPY ./pref.example.toml /base/
+COPY --from=stilleshan/subconverter /base/* /root/
+RUN rm /root/pref.*
+COPY ./pref.example.toml /root/
 # Install nginx & gettext (envsubst)
 # Create cachedir and fix permissions
 RUN apk add --no-cache --update \
