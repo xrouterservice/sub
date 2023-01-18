@@ -23,7 +23,7 @@ RUN apk add --no-cache --update tini
 
 # Install a golang port of supervisord
 COPY --from=ochinchina/supervisord:latest /usr/local/bin/supervisord /usr/bin/supervisord
-COPY --from=tindy2013/subconverter:latest /base/ /base
+COPY --from=tindy2013/subconverter:latest /base/* /base/
 RUN rm /base/pref.example.*
 COPY ./pref.example.toml /base/
 # Install nginx & gettext (envsubst)
@@ -38,7 +38,6 @@ RUN apk add --no-cache --update \
 
 COPY ./supervisord.conf /supervisord.conf
 COPY ./nginx.conf /etc/nginx/nginx.conf
-RUN cat /etc/nginx/nginx.conf
 COPY --from=build /app/dist /usr/share/nginx/html
 
 CMD ["/usr/bin/supervisord","-c","/supervisord.conf"]
