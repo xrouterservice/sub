@@ -23,10 +23,10 @@ RUN apk add --no-cache --update tini
 
 # Install a golang port of supervisord
 COPY --from=ochinchina/supervisord:latest /usr/local/bin/supervisord /usr/bin/supervisord
-RUN wget https://github.com/tindy2013/subconverter/releases/download/v0.7.2/subconverter_linux64.tar.gz && tar -zxvf subconverter_linux64.tar.gz
-RUN rm /subconverter/pref.*
-COPY ./pref.example.toml /subconverter/
-RUN chmod -R 777 /subconverter
+#RUN wget https://github.com/tindy2013/subconverter/releases/download/v0.7.2/subconverter_linux64.tar.gz && tar -zxvf subconverter_linux64.tar.gz
+#RUN rm /subconverter/pref.*
+#COPY ./pref.example.toml /subconverter/
+#RUN chmod -R 777 /subconverter
 # Create cachedir and fix permissions
 RUN apk add --no-cache --update \
     gettext zip unzip git \
